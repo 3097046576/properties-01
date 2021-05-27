@@ -1,0 +1,125 @@
+
+.head{
+    position: relative;
+    width: 100%;
+    height: 80px;
+    margin-bottom: 10px;
+    background-image: linear-gradient(to right, #009ad6, #90d7ec);
+    border-radius: 20px;
+    text-align: center;
+}
+
+.Welcome{
+    width: 100px;
+    height: 60px;
+    line-height: 60px;
+    font-size: 30px;
+    text-align: center;
+    border-radius: 20px 20px 0px 0px ;
+    float: left;
+    margin: 20px 0px 0px 30px;
+    cursor: default;
+    background-image:-webkit-linear-gradient(right,#ffe600,red);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    transition: all 1s;
+}
+.welcome:hover{
+    transform: rotate(-360deg);
+    font-size: 40px;
+}
+
+.head>ul li{
+    float: left;
+    width: 80px;
+    height: 40px;
+    margin: 40px 0px 0px 30px;
+    line-height: 40px;
+    border-radius: 10px 10px 0px 0px ;
+    transition: all 0.5s
+}
+.head>ul li>a{
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+.head>ul li:hover{
+    background: #7bbfea;
+}
+
+.head .search{
+    float: left;
+    width: 360px;
+    height: 30px;
+    margin: 25px 300px;
+}
+.head .search #search{
+    width: 300px;
+    height: 30px;
+    float: left;
+    padding-left: 10px;
+}
+.head .search #searchButton{
+    width: 60px;
+    height: 30px;
+    float: left;
+}
+
+.head .user{
+    position: absolute;
+    right: 30px;
+    top: 30px;
+    float: right;
+    width: 100px;
+    height: 50px;
+    overflow: hidden;
+    transition: all 0.5s;
+}
+.head .user:hover{
+    height: 200px;
+}
+
+.head .user ul li:first-child{
+    border-radius: 20px 20px 0px 0px;
+}
+
+.head .user ul li:last-child{
+    border-radius: 0px 0px 20px 20px;
+}
+.head .user ul li{
+    width: 100px;
+    height: 50px;
+    font-size: 14px;
+    line-height: 60px;
+    text-align: center;
+    line-height: 50px;
+    border-bottom: #ccc solid 1px;
+    background-color: #33a3dc;
+    cursor: pointer;
+}
+.head .user ul li:hover{
+    background-color: #7bbfea;
+}
+
+.head #login{
+    float: right;
+    margin: 30px 50px 0px 0px;
+    width: 100px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    font-size: 20px;
+    background-color: #33a3dc;
+    border-radius: 20px 20px 0px 0px;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+.head #login:hover{
+    background-color: #7bbfea;
+    color: red;
+    font-size: 30px;
+}
+
+
+
+

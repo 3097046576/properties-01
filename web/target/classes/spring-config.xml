@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx" xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="
+                    http://www.springframework.org/schema/beans
+                    http://www.springframework.org/schema/beans/spring-beans.xsd
+                    http://www.springframework.org/schema/tx
+                    http://www.springframework.org/schema/tx/spring-tx.xsd
+                    http://www.springframework.org/schema/aop
+                    http://www.springframework.org/schema/aop/spring-aop.xsd
+                    http://www.springframework.org/schema/context
+                    http://www.springframework.org/schema/context/spring-context.xsd">
+
+<!--    包扫描-->
+    <context:component-scan base-package="com.my.controller"></context:component-scan>
+
+<!--    开启注解驱动-->
+    <context:annotation-config />
+
+<!--    加载配置文件-->
+    <context:property-placeholder location="classpath:jdbcData.properties"/>
+
+<!--    事务注解驱动开启-->
+    <tx:annotation-driven></tx:annotation-driven>
+
+<!--    配置mybatis数据源-->
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" destroy-method="close" init-method="init">
+        <property name="driverClassName" value="${jdbc.driver}"></property>
+        <property name="url" value="${jdbc.url}"></property>
+        <property name="username" value="${jdbc.userName}"></property>
+        <property name="password" value="${jdbc.password}"></property>
+    </bean>
+
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"></property>
+        <property name="configLocation" value="classpath:mybatis-config.xml"></property>
+        <property name="mapperLocations" value="classpath:mapper/*.xml"></property>
+    </bean>
+
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.my.dao"></property>
+    </bean>
+
+<!--    开去事务配置-->
+    <bean id="transactionManager"
+          class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource" />
+    </bean>
+
+
+    <aop:config>
+        <aop:pointcut id="pointcut" expression="execution(* *..*ServiceImpl.*(..))"/>
+        <aop:advisor advice-ref="tx_advice" pointcut-ref="pointcut"></aop:advisor>
+    </aop:config>
+
+    <tx:advice id="tx_advice" transaction-manager="transactionManager">
+        <tx:attributes>
+            <tx:method name="select*" propagation="REQUIRES_NEW" read-only="true"/>
+            <tx:method name="delete*" propagation="REQUIRES_NEW" rollback-for="java.lang.Exception"/>
+            <tx:method name="update*" propagation="REQUIRES_NEW" rollback-for="java.lang.Exception"/>
+            <tx:method name="insert*" propagation="REQUIRES_NEW" rollback-for="java.lang.Exception"/>
+        </tx:attributes>
+    </tx:advice>
+
+
+</beans>

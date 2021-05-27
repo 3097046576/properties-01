@@ -1,0 +1,42 @@
+
+
+
+.source{
+    width: 99%;
+    height: 100%;
+    border: solid 1px;
+}
+
+.imgNum,.fontNum,.musicNum,.moviesNum{
+    float: left;
+    width: 25%;
+    height: 100%;
+    border-left: solid 1px;
+    font-size: 30px;
+    text-align: center;
+}
+@keyframes fontAnimation {
+    0%{
+        color: red;
+    }
+    25%{
+        color: yellow;
+    }
+    50%{
+        color: gold;
+    }
+    75%{
+        color: greenyellow;
+    }
+    100%{
+        color: springgreen;
+    }
+}
+.imgNum>div,.fontNum>div,.musicNum>div,.moviesNum>div{
+    margin: 0 auto;
+    width: 40px;
+    height: 599px;
+    padding-top: 50px;
+    animation: fontAnimation 4s linear infinite alternate;
+
+}

@@ -1,0 +1,44 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    user-select: none;
+}
+li{
+    list-style: none;
+}
+
+a{
+     text-decoration-line: none;
+     color: black;
+ }
+
+.news{
+    position: absolute;
+    z-index: 9999;
+    left: 47%;
+    bottom: 20%;
+    padding: 20px;
+    text-align: center;
+    border-radius: 15px;
+    transition: background-color,color 0.3s;
+    color: rgba(0,0,0,0);
+}
+
+.alert_fail,.alert_fail{
+    display: none;
+}
+
+.alert_success{
+    background-color: rgba(169, 255, 167, 0.6);
+    color: #05f51e;
+}
+.alert_fail{
+    background-color: rgba(255, 0, 0, 0.6);
+    color: #ffdf00;
+}
+.main{
+    width: 1400px;
+    height: 600px;
+    margin: 0px auto;
+}

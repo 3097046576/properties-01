@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.my.dao.ImgAllMapper">
+
+    <resultMap id="resultMap" type="com.my.bean.ImgAll">
+        <result column="data" property="data"></result>
+        <result column="user_id" property="user_id"></result>
+    </resultMap>
+
+    <select id="countImgAll" resultType="int">
+        select count(data) from img_all
+         <if test="id != null">
+             where user_id = #{id}
+         </if>
+    </select>
+
+    <select id="selectImgAll" resultMap="resultMap">
+        select data from img_all where user_id=#{id}
+    </select>
+
+
+</mapper>
